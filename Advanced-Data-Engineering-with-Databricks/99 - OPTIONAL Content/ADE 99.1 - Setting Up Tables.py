@@ -185,9 +185,20 @@ parse_table_keys(DA.db_name)
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC -- TODO
-# MAGIC <FILL_IN> ${da.db_name}.challenge
-# MAGIC <FILL_IN>
+# MAGIC show DATABASEs;
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC DROP TABLE IF EXISTS ${da.db_name}.challenge;
+# MAGIC CREATE TABLE IF NOT EXISTS ${da.db_name}.challenge
+# MAGIC (id INT, 
+# MAGIC  name STRING COMMENT "PII",
+# MAGIC  created_ts TIMESTAMP COMMENT "When the Record was created",
+# MAGIC  amount DECIMAL(18,2) COMMENT "$ Amount"
+# MAGIC )
+# MAGIC COMMENT "Contains PII"
+# MAGIC TBLPROPERTIES ('contains_pii' = false) 
 
 # COMMAND ----------
 
